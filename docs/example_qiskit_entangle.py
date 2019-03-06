@@ -13,6 +13,7 @@ provides a Quantum Inspire backend that is used to execute the circuit.
 
 Copyright 2018-19 QuTech Delft. Licensed under the Apache License, Version 2.0.
 """
+import os
 from getpass import getpass
 
 from qiskit.validation.base import Obj
@@ -21,13 +22,19 @@ from qiskit.tools.compiler import execute
 
 from quantuminspire.qiskit import QI
 
+QI_EMAIL = os.getenv('API_USERNAME')
+QI_PASSWORD = os.getenv('API_PASSWORD')
+
 
 def get_authentication():
     """ Gets the authentication for connecting to the Quantum Inspire API."""
-    print('Enter email:')
-    email = input()
-    print('Enter password')
-    password = getpass()
+    if QI_EMAIL and QI_PASSWORD:
+        return QI_EMAIL, QI_PASSWORD
+    else:
+        print('Enter email:')
+        email = input()
+        print('Enter password')
+        password = getpass()
     return email, password
 
 
