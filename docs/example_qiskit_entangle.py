@@ -28,7 +28,7 @@ QI_PASSWORD = os.getenv('API_PASSWORD')
 
 def get_authentication():
     """ Gets the authentication for connecting to the Quantum Inspire API."""
-    if QI_EMAIL and QI_PASSWORD:
+    if QI_EMAIL is not None and QI_PASSWORD is not None:
         return QI_EMAIL, QI_PASSWORD
     else:
         print('Enter email:')
