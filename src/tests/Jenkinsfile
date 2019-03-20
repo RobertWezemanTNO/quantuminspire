@@ -32,7 +32,7 @@ pipeline {
                 sh 'virtualenv venv'
                 sh '''
                     . ./venv/bin/activate &&
-                    pip install . --upgrade --cache-dir /var/pip_cache -r ./src/tests/requirements.txt'
+                    pip install . --upgrade --cache-dir /var/pip_cache -r ./src/tests/requirements.txt
                    '''
            }
         }
